@@ -214,11 +214,25 @@ playerContainer.addEventListener('click', function (event) {
     if (!clickedCard || !selectedFieldPlayer) return; // Arrêtez si aucune sélection
 
     // Échangez le contenu HTML entre le joueur sélectionné et le joueur cliqué
-    const tempHTML = clickedCard.innerHTML;
+    console.log(clickedCard.children[0])
+    const tempHTML = clickedCard.children[0];
     clickedCard.innerHTML = selectedFieldPlayer.innerHTML;
-    selectedFieldPlayer.innerHTML = tempHTML;
+    selectedFieldPlayer.parentElement.replaceChild(tempHTML, selectedFieldPlayer);
 
     // Réinitialisez la sélection après l'échange
     selectedFieldPlayer.classList.remove('selected');
     selectedFieldPlayer = null;
 });
+//Ajoutez un écouteur sur le container des joueurs
+//Supprimer et renverser 
+document.querySelector('.field').addEventListener('click', (e) => {
+    const element = e.target.closest('.card')
+    const parent = element.parentElement
+    if(element){
+        const playerdiv = document.createElement('div')
+        playerdiv.className = 'player'
+        playerdiv.appendChild(element)
+        document.getElementById('playerContainer').appendChild(playerdiv)
+        parent.innerHTML = '<img src="/assets/imgs/card.webp" alt="" class="player" id="RB">'
+    }
+})
