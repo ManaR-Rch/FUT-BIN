@@ -1,0 +1,290 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/assets/imgs/back2.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+
+.field {
+  bottom: 30%;
+  display: grid;
+  grid-template-columns: repeat(4, auto); 
+  gap: 1%;
+  width: 100vw; 
+  height: 100vh; 
+  transform: perspective(1020px) rotateX(25deg);
+  justify-content: center;
+  position: relative;
+  bottom: 35px;
+  left: 25px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODkyIiBoZWlnaHQ9IjcyNSIgdmlld0JveD0iMCAwIDkwNCA2NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05MDMgNjQ5LjQzOUgxTDEyMC4zMTEgMUg3ODMuNzg4TDkwMyA2NDkuNDM5WiIgZmlsbD0iIzQwNDA0MCIgc3Ryb2tlPSIjNjk2OTY5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTY5Ljg4NDMgMjc1LjAzOEg4MzQuMTY5IiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTUwLjk5MiAyNzUuNDI1QzU1My4xOTQgMzIxLjcwMyA1MDguOTIxIDM2MC43NjMgNDUyLjAxOSAzNjAuNzYzQzM5NS4xMTcgMzYwLjc2MyAzNTAuODUzIDMyMS43MDMgMzUzLjA2MiAyNzUuNDI1QzM1NS4xNzIgMjMxLjEyMyAzOTkuNDUyIDE5Ni41NjQgNDUyLjAzNSAxOTYuNTY0QzUwNC42MTggMTk2LjU2NCA1NDguODkgMjMxLjExNSA1NTAuOTkyIDI3NS40MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNMzQzLjQ2NCA1MzAuMzMzQzM0Ni4wNjEgNDc0LjU1NCAzOTUuNzggNDMxLjI2MSA0NTQuNjI0IDQzMS4yNjFDNTEzLjQ2OSA0MzEuMjYxIDU2My4yNzkgNDc0LjU1NCA1NjUuOTk4IDUzMC4zMzNDNTY4Ljg1NSA1ODguOTEgNTE5LjE1MSA2MzguNiA0NTQuODUzIDYzOC42QzM5MC41NTQgNjM4LjYgMzQwLjczNyA1ODguOTEgMzQzLjQ3MSA1MzAuMzMzSDM0My40NjRaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTQxLjI4OCA3MS40MDA4QzU0My4wNzggMTA5LjAwOSA1MDMuMDg2IDE0MC42MzIgNDUxLjg5NyAxNDAuNjMyQzQwMC43MDggMTQwLjYzMiAzNjAuNzMyIDEwOS4wMTcgMzYyLjUzIDcxLjQwMDhDMzY0LjI1OSAzNS4yNDQ2IDQwNC4yNTEgNi45MzU5MSA0NTEuOTIgNi45MzU5MUM0OTkuNTgyIDYuOTM1OTEgNTM5LjU3NCAzNS4yNDQ2IDU0MS4yODggNzEuNDAwOFoiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik01NTYuMzYyIDU1Ni42NDJIMzUyLjM1M0wzNDguNDMgNjQ5LjIzOEg1NjAuNDUzTDU1Ni4zNjIgNTU2LjY0MloiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+Cjwvc3ZnPg==');
+  background-position: center;
+  width: 40%;
+  height: 100%;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.484);
+}
+.overlay{
+  display: flex;
+  width: 100vw; 
+  height: 100vh; 
+  background-color: #0f040eb9;
+
+}
+.player {
+  position: relative;
+  top:25%;
+  width: 111px;
+  height: 111px;
+  /* opacity:0.5; */
+}
+.fa-circle-plus{
+position: relative;
+right:50%;
+}
+.item{
+  position: relative;
+  left:80px;
+}
+
+.btn {
+  position: relative;
+  top: -40%;
+  left: 15%;
+  background-color: #41195e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.484);
+  opacity: 0.5;
+
+}
+
+.btn:hover {
+  background-color: #531a96;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+
+}
+
+
+.modal-content {
+  background-color: #fff;
+  padding: 49px;
+  border-radius: 10px;
+  width: 660px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #6a0dad;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #000;
+}
+#playerForm{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+}
+form label {
+  display: block;
+  margin: 10px 0 20px;
+    margin-left: 0px;
+  color: #333;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form input {
+  width: 97%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+}
+
+form .btn {
+  width: 171px;
+  margin-top: 8px;
+  position: relative;
+  left: 100%;
+  top: 8%;
+}
+
+#playerContainer {
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -94px;
+  justify-content: center;
+  width: 27%;
+  background-color: #462e62e3;
+  max-height: 70vh;
+  overflow-y: scroll;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.484);
+}
+.playerForm{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+}
+
+.player-card {
+  width: 76px;
+  background-image: url(/assets/imgs/card.webp);
+  background-size: 100px 120px;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 110px;
+}
+
+.player-card img {
+  width: 31%;
+  border-radius: 10px;
+}
+
+.player-card h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.player-card p {
+  font-size: 14px;
+  color: #666;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+}
+
+.card-background {
+  width: 100%;
+  display: block;
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  margin-top: 10px;
+  margin-left: 11px;
+  text-align: center;
+}
+
+.rating-value {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+}
+
+.rating-position {
+  font-size: 0.8em;
+  font-weight: 600;
+  position: relative;
+  top: -8px;
+}
+
+.player-img {
+  width: 50%;
+  height: auto;
+  position: relative;
+  top: -15px;
+  right: 11px;
+}
+
+.player-info {
+text-align: center;
+  margin-top: -4px;
+ }
+
+.player-name {
+  font-size: 0.7em;
+  font-weight: 600;
+  position: relative;
+  top: -32px;
+  left: 7px;
+}
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  font-size: 0.3em;
+  margin-top: -3px;
+  position: relative;
+  bottom: 32px;
+  right: 9px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.team-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  position: relative;
+  bottom: 15px;
+}
+
+.team-icons img {
+  width: 12px;
+  height: auto;
+}
