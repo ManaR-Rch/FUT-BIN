@@ -8,6 +8,7 @@ document.getElementById('closeModal').addEventListener('click', function () {
     document.getElementById('modal').style.display = 'none';
 });
 
+
 window.addEventListener('click', function (event) {
     const modal = document.getElementById('modal');
     if (event.target === modal) {
@@ -178,17 +179,17 @@ playerContainer.addEventListener('click', function (event) {
 const fieldPlayers = document.querySelectorAll('.field .player');
 
 // Ajouter un écouteur sur chaque joueur du terrain
-fieldPlayers.forEach((fieldPlayer) => {
-    fieldPlayer.addEventListener('click', function () {
-        const position = fieldPlayer.id; // Obtenir la position (ID du joueur dans le terrain)
-        const players = loadFromLocalStorage(); // Charger les joueurs sauvegardés
-        const filteredPlayers = players.filter(player => player.position === position); // Filtrer par position
+// fieldPlayers.forEach((fieldPlayer) => {
+//     fieldPlayer.addEventListener('click', function () {
+//         const position = fieldPlayer.parentElement.id; // Obtenir la position (ID du joueur dans le terrain)
+//         const players = loadFromLocalStorage(); // Charger les joueurs sauvegardés
+//         const filteredPlayers = players.filter(player => player.position === position); // Filtrer par position
 
-        // Réinitialiser l'affichage dans le playerContainer
-        playerContainer.innerHTML = '';
-        filteredPlayers.forEach(displayPlayerCard); // Afficher uniquement les joueurs filtrés
-    });
-});
+//         // Réinitialiser l'affichage dans le playerContainer
+//         playerContainer.innerHTML = '';
+//         filteredPlayers.forEach(displayPlayerCard); // Afficher uniquement les joueurs filtrés
+//     });
+// });
 
 //////////////////////////////Echange des joueurs/////////////////////////////////
 
@@ -211,10 +212,10 @@ fieldPlayers.forEach((fieldPlayer) => {
 // Ajoutez un écouteur sur le container des joueurs
 playerContainer.addEventListener('click', function (event) {
     const clickedCard = event.target.closest('.player'); // Vérifiez si un joueur a été cliqué
+    console.log(clickedCard)
     if (!clickedCard || !selectedFieldPlayer) return; // Arrêtez si aucune sélection
 
     // Échangez le contenu HTML entre le joueur sélectionné et le joueur cliqué
-    console.log(clickedCard.children[0])
     const tempHTML = clickedCard.children[0];
     clickedCard.innerHTML = selectedFieldPlayer.innerHTML;
     selectedFieldPlayer.parentElement.replaceChild(tempHTML, selectedFieldPlayer);
@@ -227,12 +228,25 @@ playerContainer.addEventListener('click', function (event) {
 //Supprimer et renverser 
 document.querySelector('.field').addEventListener('click', (e) => {
     const element = e.target.closest('.card')
-    const parent = element.parentElement
+    const parent = element?.parentElement || null
     if(element){
         const playerdiv = document.createElement('div')
         playerdiv.className = 'player'
         playerdiv.appendChild(element)
         document.getElementById('playerContainer').appendChild(playerdiv)
-        parent.innerHTML = '<img src="/assets/imgs/card.webp" alt="" class="player" id="RB">'
+        parent.innerHTML = '<img src="/assets/imgs/card.webp" alt="" class="player">'
+    }else{
+        if(e.target.classList.contains('player')){
+
+            const position = e.target.parentElement.id; // Obtenir la position (ID du joueur dans le terrain)
+
+            const players = loadFromLocalStorage(); // Charger les joueurs sauvegardés
+            const filteredPlayers = players.filter(player => player.position === position); // Filtrer par position
+
+            // Réinitialiser l'affichage dans le playerContainer
+            playerContainer.innerHTML = '';
+            filteredPlayers.forEach(displayPlayerCard); // Afficher uniquement les joueurs filtrés
+            selectedFieldPlayer = e.target;
+        }
     }
 })
