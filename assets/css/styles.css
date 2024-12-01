@@ -58,19 +58,18 @@ right:50%;
   position: relative;
   top: -40%;
   left: 15%;
-  background-color: #41195e;
+  background-color: #65457d;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.484);
-  opacity: 0.5;
 
 }
 
 .btn:hover {
-  background-color: #531a96;
+  background-color: #8964b4;
 }
 
 .modal {
@@ -88,16 +87,16 @@ right:50%;
 
 
 .modal-content {
-  background-color: #fff;
   padding: 49px;
   border-radius: 10px;
   width: 660px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #302047, #fff);
 }
 
 .modal-content h2 {
   margin-top: 0;
-  color: #6a0dad;
+  color:#d293ff;
   text-align: center;
 }
 
@@ -113,15 +112,7 @@ right:50%;
 }
 #playerForm{
   display: grid;
-  grid-template-columns: repeat(4,auto);
-}
-form label {
-  display: block;
-  margin: 10px 0 20px;
-    margin-left: 0px;
-  color: #333;
-  margin-left: auto;
-  margin-right: auto;
+gap:5px;
 }
 
 form input {
@@ -137,8 +128,7 @@ form .btn {
   width: 171px;
   margin-top: 8px;
   position: relative;
-  left: 100%;
-  top: 8%;
+  left: 39%;
 }
 
 #playerContainer {
@@ -156,7 +146,7 @@ form .btn {
 }
 .playerForm{
   display: grid;
-  grid-template-columns: repeat(2,auto);
+  gap:10px;
 }
 
 .player-card {

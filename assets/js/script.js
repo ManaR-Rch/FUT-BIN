@@ -31,7 +31,7 @@ function loadFromLocalStorage() {
     return players ? JSON.parse(players) : [];
 }
 
-
+// Fonction pour afficher une carte de joueur
 // Fonction pour afficher une carte de joueur
 function displayPlayerCard(player, index) {
     const card = document.createElement('div');
@@ -93,10 +93,20 @@ document.addEventListener('DOMContentLoaded', function () {
     players.forEach((player, index) => displayPlayerCard(player, index));
 });
 
-// Écouteur pour le formulaire
+//Écouteur pour le formulaire
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log('get 55')
+    const textFields = ['name', 'flag', 'logo','photo'];
+    for (let fieldId of textFields) {
+        const field = document.getElementById(fieldId);
+        const fieldValue = field.value.trim();
+        if (/^\d+$/.test(fieldValue)) { 
+            alert(`Please type a valid text in the ${fieldId} field, not a number.`);
+            field.focus();
+            return; 
+        }
+    }
+
     // Récupérer les données du formulaire
     const newPlayer = {
         photo: document.getElementById('photo').value.trim(),
@@ -104,8 +114,8 @@ form.addEventListener('submit', function (e) {
         logo: document.getElementById('logo').value.trim(),
         name: document.getElementById('name').value.trim(),
         position: document.getElementById('position').value.trim(),
-        nationality: document.getElementById('nationality').value.trim(),
-        club: document.getElementById('club').value.trim(),
+        // nationality: document.getElementById('nationality').value.trim(),
+        // club: document.getElementById('club').value.trim(),
         rating: document.getElementById('rating').value.trim(),
         pace: document.getElementById('pace')?.value.trim(),
         shooting: document.getElementById('shooting')?.value.trim(),
@@ -122,18 +132,15 @@ form.addEventListener('submit', function (e) {
     };
 
     const players = loadFromLocalStorage();
+
     if (form.dataset.editingIndex !== undefined) {
         // Mise à jour d'un joueur existant
         const index = form.dataset.editingIndex;
-        console.log('get 1')
         players[index] = newPlayer;
-        console.log(players[index])
-
     } else {
         // Ajout d'un nouveau joueur
         players.push(newPlayer);
-        console.log('get 22')
-
+       
     }
 
     // Sauvegarde et réaffichage
@@ -146,9 +153,6 @@ form.addEventListener('submit', function (e) {
     delete form.dataset.editingIndex;
     document.getElementById('modal').style.display = 'none';
 });
-
-///////fin display card //////////
-
 
 // Gestion de la modification d'un joueur
 playerContainer.addEventListener('click', function (event) {
@@ -163,44 +167,15 @@ playerContainer.addEventListener('click', function (event) {
         document.getElementById('logo').value = player.logo || '';
         document.getElementById('name').value = player.name || '';
         document.getElementById('position').value = player.position || '';
-        document.getElementById('nationality').value = player.nationality || '';
-        document.getElementById('club').value = player.club || '';
+        // document.getElementById('nationality').value = player.nationality || '';
+        // document.getElementById('club').value = player.club || '';
         document.getElementById('rating').value = player.rating || '';
-
-        const basicStats = document.getElementById('basic-stats');
-        const existingStatsContainer = document.querySelector('.stats-container');
-
-        // Supprimer les champs spécifiques existants
-        if (existingStatsContainer) {
-            existingStatsContainer.remove();
-        }
-
-        if (player.position === 'GK') {
-            // Masquer les stats standards
-            basicStats.style.display = 'none';
-
-            // Ajouter les champs spécifiques GK
-            const container = document.createElement('div');
-            container.className = 'stats-container';
-            container.innerHTML = `
-                <input type="number" id="diving" placeholder="Diving" value="${player.diving || ''}" required />
-                <input type="number" id="handling" placeholder="Handling" value="${player.handling || ''}" required />
-                <input type="number" id="kicking" placeholder="Kicking" value="${player.kicking || ''}" required />
-                <input type="number" id="reflexes" placeholder="Reflexes" value="${player.reflexes || ''}" required />
-                <input type="number" id="speed" placeholder="Speed" value="${player.speed || ''}" required />
-                <input type="number" id="positioning" placeholder="Positioning" value="${player.positioning || ''}" required />
-            `;
-            form.insertBefore(container, form.querySelector('button')); // Ajouter avant le bouton
-        } else {
-            // Réafficher les stats standards
-            basicStats.style.display = '';
-            document.getElementById('pace').value = player.pace || '';
-            document.getElementById('shooting').value = player.shooting || '';
-            document.getElementById('passing').value = player.passing || '';
-            document.getElementById('dribbling').value = player.dribbling || '';
-            document.getElementById('defending').value = player.defending || '';
-            document.getElementById('physical').value = player.physical || '';
-        }
+        document.getElementById('pace').value = player.pace || '';
+        document.getElementById('shooting').value = player.shooting || '';
+        document.getElementById('passing').value = player.passing || '';
+        document.getElementById('dribbling').value = player.dribbling || '';
+        document.getElementById('defending').value = player.defending || '';
+        document.getElementById('physical').value = player.physical || '';
 
         // Ajouter un attribut au formulaire pour signaler qu'on modifie un joueur
         form.dataset.editingIndex = index;
