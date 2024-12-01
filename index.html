@@ -61,13 +61,12 @@
             <span id="closeModal" class="close">&times;</span>
             <h2>Ajouter un joueur</h2>
             <form id="playerForm">
-               
                 <input type="text" id="photo" placeholder="Photo URL" required />
-                
                 <input type="text" id="name" placeholder="Player Name" required />
-
+            
+                <!-- Liste déroulante pour sélectionner la position -->
                 <select id="position" required>
-                    <option value="">-- Sélectionnez une position --</option>
+                    <option value="" selected >-- Sélectionnez une position --</option>
                     <option value="RW">RW</option>
                     <option value="CB">CB</option>
                     <option value="LB">LB</option>
@@ -75,43 +74,31 @@
                     <option value="CM">CM</option>
                     <option value="LW">LW</option>
                     <option value="ST">ST</option>
-                    <option value="ST">GK</option>
+                    <option value="GK">GK</option>
                 </select>
-
-                
+            
                 <input type="text" id="nationality" placeholder="Nationality" required />
-
                 <input type="text" id="flag" placeholder="Flag URL" required />
-
-                
-                <input type="text" id="club" placeholder="Club" required /> 
-                
-               
+                <input type="text" id="club" placeholder="Club" required />
                 <input type="text" id="logo" placeholder="Club Logo URL" required />
-
-               
                 <input type="number" id="rating" placeholder="Rating" required />
-                
-                
-                <input type="number" id="pace" placeholder="Pace" required />
-
-              
-                <input type="number" id="shooting" placeholder="Shooting" required />
-
-                
-                <input type="number" id="passing" placeholder="Passing" required />
-
-                
-                <input type="number" id="dribbling" placeholder="Dribbling" required />
-
-               
-                <input type="number" id="defending" placeholder="Defending" required />
-
-              
-                <input type="number" id="physical" placeholder="Physical" required />
-
+            
+                <!-- Champs de statistiques de base -->
+                <div id="basic-stats">
+                    <input type="number" id="pace" placeholder="Pace" required />
+                    <input type="number" id="shooting" placeholder="Shooting" required />
+                    <input type="number" id="passing" placeholder="Passing" required />
+                    <input type="number" id="dribbling" placeholder="Dribbling" required />
+                    <input type="number" id="defending" placeholder="Defending" required />
+                    <input type="number" id="physical" placeholder="Physical" required />
+                </div>
+            
+                <!-- Conteneur pour champs dynamiques -->
+                <div id="dynamic-fields"></div>
+            
                 <button type="submit" class="btn">Enregistrer</button>
             </form>
+            
         </div>
     </div>
   <button id="openModal" class="btn">Ajouter un joueur</button>

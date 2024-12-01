@@ -31,10 +31,34 @@ function loadFromLocalStorage() {
     return players ? JSON.parse(players) : [];
 }
 
+
 // Fonction pour afficher une carte de joueur
 function displayPlayerCard(player, index) {
     const card = document.createElement('div');
     card.classList.add('player');
+
+    // Vérifier si le joueur est un GK
+    const playerStats = player.position === 'GK'
+        ? `
+            <div class="player-stats">
+                <div class="stat"><span>| DIV</span><span>${player.diving}</span></div>
+                <div class="stat"><span>| HAN</span><span>${player.handling}</span></div>
+                <div class="stat"><span>| KIC</span><span>${player.kicking}</span></div>
+                <div class="stat"><span>| REF</span><span>${player.reflexes}</span></div>
+                <div class="stat"><span>| SPE</span><span>${player.speed}</span></div>
+                <div class="stat"><span>| POS</span><span>${player.positioning}</span></div>
+            </div>
+        `
+        : `
+            <div class="player-stats">
+                <div class="stat"><span>| Pac</span><span>${player.pace}</span></div>
+                <div class="stat"><span>| Sho</span><span>${player.shooting}</span></div>
+                <div class="stat"><span>| Pas</span><span>${player.passing}</span></div>
+                <div class="stat"><span>| Dri</span><span>${player.dribbling}</span></div>
+                <div class="stat"><span>| Def</span><span>${player.defending}</span></div>
+                <div class="stat"><span>| Phy</span><span>${player.physical}</span></div>
+            </div>
+        `;
 
     card.innerHTML = `
         <div class="card">
@@ -53,14 +77,7 @@ function displayPlayerCard(player, index) {
                 </div>
                 <div class="player-info">
                     <h1 class="player-name">${player.name}</h1>
-                    <div class="player-stats">
-                        <div class="stat"><span>| Pac</span><span>${player.pace}</span></div>
-                        <div class="stat"><span>| Sho</span><span>${player.shooting}</span></div>
-                        <div class="stat"><span>| Pas</span><span>${player.passing}</span></div>
-                        <div class="stat"><span>| Dri</span><span>${player.dribbling}</span></div>
-                        <div class="stat"><span>| Def</span><span>${player.defending}</span></div>
-                        <div class="stat"><span>| Phy</span><span>${player.physical}</span></div>
-                    </div>
+                    ${playerStats}
                 </div>
             </div>
         </div>
@@ -79,65 +96,59 @@ document.addEventListener('DOMContentLoaded', function () {
 // Écouteur pour le formulaire
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-
+    console.log('get 55')
     // Récupérer les données du formulaire
-    const photo = document.getElementById('photo').value.trim();
-    const flag = document.getElementById('flag').value.trim();
-    const logo = document.getElementById('logo').value.trim();
-    const name = document.getElementById('name').value.trim();
-    const position = document.getElementById('position').value.trim();
-    const nationality = document.getElementById('nationality').value.trim();
-    const club = document.getElementById('club').value.trim();
-    const rating = document.getElementById('rating').value.trim();
-    const pace = document.getElementById('pace').value.trim();
-    const shooting = document.getElementById('shooting').value.trim();
-    const passing = document.getElementById('passing').value.trim();
-    const dribbling = document.getElementById('dribbling').value.trim();
-    const defending = document.getElementById('defending').value.trim();
-    const physical = document.getElementById('physical').value.trim();
-
     const newPlayer = {
-        photo: photo,
-        flag: flag,
-        logo: logo,
-        name: name,
-        position: position,
-        nationality: nationality,
-        club: club,
-        rating: rating,
-        pace: pace,
-        shooting: shooting,
-        passing: passing,
-        dribbling: dribbling,
-        defending: defending,
-        physical: physical,
+        photo: document.getElementById('photo').value.trim(),
+        flag: document.getElementById('flag').value.trim(),
+        logo: document.getElementById('logo').value.trim(),
+        name: document.getElementById('name').value.trim(),
+        position: document.getElementById('position').value.trim(),
+        nationality: document.getElementById('nationality').value.trim(),
+        club: document.getElementById('club').value.trim(),
+        rating: document.getElementById('rating').value.trim(),
+        pace: document.getElementById('pace')?.value.trim(),
+        shooting: document.getElementById('shooting')?.value.trim(),
+        passing: document.getElementById('passing')?.value.trim(),
+        dribbling: document.getElementById('dribbling')?.value.trim(),
+        defending: document.getElementById('defending')?.value.trim(),
+        physical: document.getElementById('physical')?.value.trim(),
+        diving: document.getElementById('diving')?.value.trim(),
+        handling: document.getElementById('handling')?.value.trim(),
+        kicking: document.getElementById('kicking')?.value.trim(),
+        reflexes: document.getElementById('reflexes')?.value.trim(),
+        speed: document.getElementById('speed')?.value.trim(),
+        positioning: document.getElementById('positioning')?.value.trim(),
     };
 
     const players = loadFromLocalStorage();
-
     if (form.dataset.editingIndex !== undefined) {
         // Mise à jour d'un joueur existant
         const index = form.dataset.editingIndex;
+        console.log('get 1')
         players[index] = newPlayer;
+        console.log(players[index])
 
-        // Mise à jour de Local Storage
-        saveToLocalStorage(players);
-
-        // Réafficher toutes les cartes des joueurs
-        playerContainer.innerHTML = ''; // Effacer les anciennes cartes
-        players.forEach((player, index) => displayPlayerCard(player, index)); // Réafficher les cartes mises à jour
     } else {
         // Ajout d'un nouveau joueur
         players.push(newPlayer);
-        saveToLocalStorage(players);
-        displayPlayerCard(newPlayer, players.length - 1);
+        console.log('get 22')
+
     }
 
-    // Réinitialiser le formulaire et fermer le modal
+    // Sauvegarde et réaffichage
+    saveToLocalStorage(players);
+    playerContainer.innerHTML = ''; // Efface l'ancien affichage
+    players.forEach((player, index) => displayPlayerCard(player, index));
+
+    // Réinitialisation
     form.reset();
-    delete form.dataset.editingIndex; // Supprimer l'attribut de modification
+    delete form.dataset.editingIndex;
     document.getElementById('modal').style.display = 'none';
 });
+
+///////fin display card //////////
+
 
 // Gestion de la modification d'un joueur
 playerContainer.addEventListener('click', function (event) {
@@ -155,12 +166,41 @@ playerContainer.addEventListener('click', function (event) {
         document.getElementById('nationality').value = player.nationality || '';
         document.getElementById('club').value = player.club || '';
         document.getElementById('rating').value = player.rating || '';
-        document.getElementById('pace').value = player.pace || '';
-        document.getElementById('shooting').value = player.shooting || '';
-        document.getElementById('passing').value = player.passing || '';
-        document.getElementById('dribbling').value = player.dribbling || '';
-        document.getElementById('defending').value = player.defending || '';
-        document.getElementById('physical').value = player.physical || '';
+
+        const basicStats = document.getElementById('basic-stats');
+        const existingStatsContainer = document.querySelector('.stats-container');
+
+        // Supprimer les champs spécifiques existants
+        if (existingStatsContainer) {
+            existingStatsContainer.remove();
+        }
+
+        if (player.position === 'GK') {
+            // Masquer les stats standards
+            basicStats.style.display = 'none';
+
+            // Ajouter les champs spécifiques GK
+            const container = document.createElement('div');
+            container.className = 'stats-container';
+            container.innerHTML = `
+                <input type="number" id="diving" placeholder="Diving" value="${player.diving || ''}" required />
+                <input type="number" id="handling" placeholder="Handling" value="${player.handling || ''}" required />
+                <input type="number" id="kicking" placeholder="Kicking" value="${player.kicking || ''}" required />
+                <input type="number" id="reflexes" placeholder="Reflexes" value="${player.reflexes || ''}" required />
+                <input type="number" id="speed" placeholder="Speed" value="${player.speed || ''}" required />
+                <input type="number" id="positioning" placeholder="Positioning" value="${player.positioning || ''}" required />
+            `;
+            form.insertBefore(container, form.querySelector('button')); // Ajouter avant le bouton
+        } else {
+            // Réafficher les stats standards
+            basicStats.style.display = '';
+            document.getElementById('pace').value = player.pace || '';
+            document.getElementById('shooting').value = player.shooting || '';
+            document.getElementById('passing').value = player.passing || '';
+            document.getElementById('dribbling').value = player.dribbling || '';
+            document.getElementById('defending').value = player.defending || '';
+            document.getElementById('physical').value = player.physical || '';
+        }
 
         // Ajouter un attribut au formulaire pour signaler qu'on modifie un joueur
         form.dataset.editingIndex = index;
@@ -250,3 +290,45 @@ document.querySelector('.field').addEventListener('click', (e) => {
         }
     }
 })
+// Références aux champs spécifiques au GK
+const gkSpecificFields = `
+    <input type="number" id="diving" placeholder="Diving" required />
+    <input type="number" id="handling" placeholder="Handling" required />
+    <input type="number" id="kicking" placeholder="Kicking" required />
+    <input type="number" id="reflexes" placeholder="Reflexes" required />
+    <input type="number" id="speed" placeholder="Speed" required />
+    <input type="number" id="positioning" placeholder="Positioning" required />
+`;
+
+// Récupération du formulaire et du champ position
+const positionSelect = document.getElementById('position');
+
+// Écouteur pour changer la position
+positionSelect.addEventListener('change', function () {
+    const position = positionSelect.value;
+    const basicStats = document.getElementById('basic-stats');
+    const existingStatsContainer = document.querySelector('.stats-container');
+
+    // Supprimer les anciens champs spécifiques pour GK si présents
+    if (existingStatsContainer) {
+        existingStatsContainer.remove();
+    }
+
+    // Si GK est sélectionné
+    if (position === 'GK') {
+        // Masquer le conteneur avec ID 'basic-stats'
+        basicStats.style.display = 'none';
+
+        // Ajouter les champs spécifiques pour GK
+        const container = document.createElement('div');
+        container.className = 'stats-container';
+        container.innerHTML = gkSpecificFields;
+        form.insertBefore(container, form.querySelector('button')); // Ajouter avant le bouton "Enregistrer"
+    } else {
+        // Réafficher le conteneur 'basic-stats'
+        basicStats.style.display = '';
+    }
+});
+
+
+
