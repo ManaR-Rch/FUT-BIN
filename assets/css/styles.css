@@ -6,12 +6,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('/assets/imgs/back2.avif');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, #302047, #fff);
   
 }
-
 
 .field {
   bottom: 30%;
@@ -30,17 +27,12 @@ body {
   width: 40%;
   height: 100%;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.484);
-}
-.overlay{
-  display: flex;
-  width: 100vw; 
-  height: 100vh; 
-  background-color: #0f040eb9;
 
 }
+
 .player {
   position: relative;
-  top:25%;
+  top: 0%;
   width: 111px;
   height: 111px;
   /* opacity:0.5; */
@@ -51,16 +43,19 @@ right:50%;
 }
 .item{
   position: relative;
-  left:80px;
+  left:1px;
 }
-
+#GK{
+  position: relative;
+  left:60px;
+}
 .btn {
   position: relative;
   top: -40%;
   left: 15%;
-  background-color: #65457d;
+  background-color: #5d376a;
   color: white;
-  border: none;
+  border-radius: 20%;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
@@ -136,13 +131,16 @@ form .btn {
   grid-template-columns: repeat(2,auto);
   flex-wrap: wrap;
   gap: 10px;
-  margin: -94px;
+  margin: -77px;
   justify-content: center;
-  width: 27%;
-  background-color: #462e62e3;
+  width: 28%;
+  background: linear-gradient(135deg, #2b1e2e, #fff);
   max-height: 70vh;
   overflow-y: scroll;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.484);
+  height: 84%;
+  transform: perspective(1020px) rotateX(15deg);
+
 }
 .playerForm{
   display: grid;
@@ -245,11 +243,11 @@ text-align: center;
  }
 
 .player-name {
-  font-size: 0.7em;
+  font-size: 0.6em;
   font-weight: 600;
   position: relative;
-  top: -32px;
-  left: 7px;
+  top: -31px;
+  left: -6px;
 }
 
 .player-stats {
@@ -275,6 +273,24 @@ text-align: center;
 }
 
 .team-icons img {
-  width: 12px;
+  width: 10px;
   height: auto;
 }
+
+.edit-btn {
+  background:linear-gradient(135deg, #302047, #fff);
+  border-radius:35% 65% 37% 63% / 79% 15% 85% 21% ; /* Pas de bordure */
+  cursor: pointer; /* Pointeur en forme de main */
+  color: #511d61; /* Couleur de l'icône */
+  font-size: 0.6rem; /* Taille de l'icône */
+  transition: color 0.3s ease;
+  position: relative;
+  bottom: 10px;
+  left: 42px;
+  font-weight: bold;
+}
+
+.edit-btn:hover {
+  color: #763779; /* Couleur au survol */
+}
+

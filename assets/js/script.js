@@ -81,7 +81,7 @@ function displayPlayerCard(player, index) {
                 </div>
             </div>
         </div>
-        <button class="edit-btn" data-index="${index}">Modifier</button>
+        <button class="edit-btn" data-index="${index}">Edit</button>
     `;
 
     playerContainer.appendChild(card);
@@ -114,8 +114,6 @@ form.addEventListener('submit', function (e) {
         logo: document.getElementById('logo').value.trim(),
         name: document.getElementById('name').value.trim(),
         position: document.getElementById('position').value.trim(),
-        // nationality: document.getElementById('nationality').value.trim(),
-        // club: document.getElementById('club').value.trim(),
         rating: document.getElementById('rating').value.trim(),
         pace: document.getElementById('pace')?.value.trim(),
         shooting: document.getElementById('shooting')?.value.trim(),
@@ -192,20 +190,6 @@ playerContainer.addEventListener('click', function (event) {
 
 
 const fieldPlayers = document.querySelectorAll('.field .player');
-
-// Ajouter un écouteur sur chaque joueur du terrain
-// fieldPlayers.forEach((fieldPlayer) => {
-//     fieldPlayer.addEventListener('click', function () {
-//         const position = fieldPlayer.parentElement.id; // Obtenir la position (ID du joueur dans le terrain)
-//         const players = loadFromLocalStorage(); // Charger les joueurs sauvegardés
-//         const filteredPlayers = players.filter(player => player.position === position); // Filtrer par position
-
-//         // Réinitialiser l'affichage dans le playerContainer
-//         playerContainer.innerHTML = '';
-//         filteredPlayers.forEach(displayPlayerCard); // Afficher uniquement les joueurs filtrés
-//     });
-// });
-
 //////////////////////////////Echange des joueurs/////////////////////////////////
 
 let selectedFieldPlayer = null; // Pour suivre le joueur sélectionné dans le terrain
