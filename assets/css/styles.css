@@ -6,8 +6,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #302047, #fff);
-  
+  background-image: url('/assets/imgs/anderlecht-inflige-une-grosse-sanction-a-la-mauve-army-apres-les-debordements-contre-la-real-sociedad.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .field {
@@ -262,6 +263,8 @@ text-align: center;
 
 .stat {
   text-align: center;
+  font-weight: bold;
+  font-size: 7px;
 }
 
 .team-icons {

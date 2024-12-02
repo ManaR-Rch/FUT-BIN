@@ -32,7 +32,6 @@ function loadFromLocalStorage() {
 }
 
 // Fonction pour afficher une carte de joueur
-// Fonction pour afficher une carte de joueur
 function displayPlayerCard(player, index) {
     const card = document.createElement('div');
     card.classList.add('player');
@@ -41,22 +40,22 @@ function displayPlayerCard(player, index) {
     const playerStats = player.position === 'GK'
         ? `
             <div class="player-stats">
-                <div class="stat"><span>| DIV</span><span>${player.diving}</span></div>
-                <div class="stat"><span>| HAN</span><span>${player.handling}</span></div>
-                <div class="stat"><span>| KIC</span><span>${player.kicking}</span></div>
-                <div class="stat"><span>| REF</span><span>${player.reflexes}</span></div>
-                <div class="stat"><span>| SPE</span><span>${player.speed}</span></div>
-                <div class="stat"><span>| POS</span><span>${player.positioning}</span></div>
+                <div class="stat"><span>| DIV </span><span>${player.diving}</span></div>
+                <div class="stat"><span>| HAN </span><span>${player.handling}</span></div>
+                <div class="stat"><span>| KIC </span><span>${player.kicking}</span></div>
+                <div class="stat"><span>| REF </span><span>${player.reflexes}</span></div>
+                <div class="stat"><span>| SPE </span><span>${player.speed}</span></div>
+                <div class="stat"><span>| POS </span><span>${player.positioning}</span></div>
             </div>
         `
         : `
             <div class="player-stats">
-                <div class="stat"><span>| Pac</span><span>${player.pace}</span></div>
-                <div class="stat"><span>| Sho</span><span>${player.shooting}</span></div>
-                <div class="stat"><span>| Pas</span><span>${player.passing}</span></div>
-                <div class="stat"><span>| Dri</span><span>${player.dribbling}</span></div>
-                <div class="stat"><span>| Def</span><span>${player.defending}</span></div>
-                <div class="stat"><span>| Phy</span><span>${player.physical}</span></div>
+                <div class="stat"><span>| Pac </span><span>${player.pace}</span></div>
+                <div class="stat"><span>| Sho </span><span>${player.shooting}</span></div>
+                <div class="stat"><span>| Pas </span><span>${player.passing}</span></div>
+                <div class="stat"><span>| Dri </span><span>${player.dribbling}</span></div>
+                <div class="stat"><span>| Def </span><span>${player.defending}</span></div>
+                <div class="stat"><span>| Phy </span><span>${player.physical}</span></div>
             </div>
         `;
 
